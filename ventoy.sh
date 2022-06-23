@@ -47,3 +47,7 @@ sudo tar -xf ventoy-1.0.77-linux.tar.gz
 cd ventoy-1.0.77
 
 # Put your usb dev (You can use $ lsblk | grep disk to find your usb!)
+yes | sudo sh Ventoy2Disk.sh -i /dev/XXX 
+
+# ubuntu20.04
+wget https://releases.ubuntu.com/20.04/ubuntu-20.04.4-desktop-amd64.iso
