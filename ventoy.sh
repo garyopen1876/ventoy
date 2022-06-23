@@ -35,3 +35,15 @@ echo -e "                           5PJ?.              ...        :777~.        
 echo -e "                           !P?7^                                       ~JP:            "              
 echo -e "                           .7?77~                                     :7?7             "              
 echo -e "                             ...                                     ...               "
+
+
+
+sudo apt-get update
+
+# Put your ventoy download setting 
+
+wget https://github.com/ventoy/Ventoy/releases/download/v1.0.77/ventoy-1.0.77-linux.tar.gz
+sudo tar -xf ventoy-1.0.77-linux.tar.gz
+cd ventoy-1.0.77
+
+# Put your usb dev (You can use $ lsblk | grep disk to find your usb!)
