@@ -5,10 +5,7 @@ GREEN='\033[32m'  # Green
 YELLOW='\033[33m' # YELLOW
 CLEAR='\033[0m'   # Clear color and formatting
 
-# Setup script for setting up a new macos machine
 echo -e "${GREEN}Starting ventoy :)${CLEAR}"
-
-# Bonk!
 echo -e "                              ...:::::^^!7                                             "              
 echo -e "                           .?5555GG555555Y!.                                           "              
 echo -e "                          ?B#YPP55555YJJJY?!^                BONK!                     "              
@@ -46,8 +43,8 @@ wget https://github.com/ventoy/Ventoy/releases/download/v1.0.77/ventoy-1.0.77-li
 sudo tar -xf ventoy-1.0.77-linux.tar.gz
 cd ventoy-1.0.77
 
-# Put your usb dev here(You can use $ lsblk | grep disk to find your usb!)
-usb=xxx
+
+usb=xxx # Put your usb dev here(You can use $ lsblk | grep disk to find your usb!)
 
 yes | sudo sh Ventoy2Disk.sh -i /dev/$usb 
 cd ..
@@ -63,23 +60,29 @@ function google_drive_download() {
 	curl -Lb ./cookie "https://drive.google.com/uc?export=download&`echo ${html}|grep -Po '(confirm=[a-zA-Z0-9\-_]+)'`&id=${fileid}" -o ${filename}
 }
 
-
 # Clonezilla 
+echo -e "${YELLOW}Starting Downloading Clonezilla${CLEAR}"
 wget "https://osdn.net/frs/redir.php?m=rwthaachen&f=clonezilla%2F77480%2Fclonezilla-live-20220620-jammy-amd64.iso" -O "Clonezilla.iso"
 
+
 # lenovo
-wget "https://download.lenovo.com/pccbbs/mobiles/g2uj33us.iso"
-wget "https://download.lenovo.com/pccbbs/thinkvantage_en/ldiag_4.41.0_linux.iso"
+echo -e "${YELLOW}Starting Downloading Lenovo Things${CLEAR}"
+wget "https://download.lenovo.com/pccbbs/mobiles/g2uj33us.iso" -O "Lenovo_BIOS_Upgrade.iso"
+wget "https://download.lenovo.com/pccbbs/thinkvantage_en/ldiag_4.41.0_linux.iso" -O "Lenovo_Diagnostics.iso"
 
 # ubuntu20.04
+echo -e "${YELLOW}Starting Downloading Ubuntu 20.04${CLEAR}"
 wget "https://releases.ubuntu.com/20.04/ubuntu-20.04.4-desktop-amd64.iso"
 
 # USBOX 7
+echo -e "${YELLOW}Starting Downloading USBOX 7${CLEAR}"
 google_drive_download "1EKWsGPR04mmp5CrqTaZ2yyf9z63o4HnT" "USBOX_V7[ISO版].iso"
 
 # windows 10
+echo -e "${YELLOW}Starting Downloading Windows10${CLEAR}"
 google_drive_download "1VGz51tQakXOnUmLtJUlfpqnrcLyebnbb" "Windows.iso"
 
+echo -e "${YELLOW}Starting Moving ISO To Your USB(it may take some time and make sure your usb is NTFS!)${CLEAR}"
 sudo mkdir /mnt/usb
 sudo mount /dev/${usb}1 /mnt/usb
 sudo cp *.iso /mnt/usb
