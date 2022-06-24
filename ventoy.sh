@@ -47,7 +47,7 @@ sudo tar -xf ventoy-1.0.77-linux.tar.gz
 cd ventoy-1.0.77
 
 # Put your usb dev here(You can use $ lsblk | grep disk to find your usb!)
-usb = xxx
+usb=xxx
 
 yes | sudo sh Ventoy2Disk.sh -i /dev/$usb 
 cd ..
@@ -65,10 +65,10 @@ function google_drive_download() {
 
 
 # Clonezilla 
-wget "https://osdn.net/frs/redir.php?m=rwthaachen&f=clonezilla%2F77480%2Fclonezilla-live-20220620-jammy-amd64.iso"
+wget "https://osdn.net/frs/redir.php?m=rwthaachen&f=clonezilla%2F77480%2Fclonezilla-live-20220620-jammy-amd64.iso" -O "Clonezilla.iso"
 
 # lenovo
-wget "https://download.lenovo.com/pccbbs/mobiles/g2uj33us.iso" -o 
+wget "https://download.lenovo.com/pccbbs/mobiles/g2uj33us.iso"
 wget "https://download.lenovo.com/pccbbs/thinkvantage_en/ldiag_4.41.0_linux.iso"
 
 # ubuntu20.04
