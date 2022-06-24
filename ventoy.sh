@@ -48,6 +48,12 @@ cd ventoy-1.0.77
 
 # Put your usb dev (You can use $ lsblk | grep disk to find your usb!)
 yes | sudo sh Ventoy2Disk.sh -i /dev/XXX 
+cd ..
 
+mkdir iso && cd "$_"
+
+# lenovo
+wget https://download.lenovo.com/pccbbs/mobiles/g2uj33us.iso
+wget https://download.lenovo.com/pccbbs/thinkvantage_en/ldiag_4.41.0_linux.iso
 # ubuntu20.04
 wget https://releases.ubuntu.com/20.04/ubuntu-20.04.4-desktop-amd64.iso
