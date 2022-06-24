@@ -69,21 +69,39 @@ fi
 
 
 # lenovo
+if [ ! -f Lenovo_BIOS_Upgrade.iso ]
+then
+	echo -e "${YELLOW}Starting Downloading Lenovo BIOS Upgrade${CLEAR}"
+	wget "https://download.lenovo.com/pccbbs/mobiles/g2uj33us.iso" -O "Lenovo_BIOS_Upgrade.iso"
+fi
+if [ ! -f Lenovo_Diagnostics.iso ]
+then 
+	echo -e "${YELLOW}Starting Downloading Lenovo Diagnostics${CLEAR}"
+	wget "https://download.lenovo.com/pccbbs/thinkvantage_en/ldiag_4.41.0_linux.iso" -O "Lenovo_Diagnostics.iso"
+fi
 echo -e "${YELLOW}Starting Downloading Lenovo Things${CLEAR}"
-wget "https://download.lenovo.com/pccbbs/mobiles/g2uj33us.iso" -O "Lenovo_BIOS_Upgrade.iso"
-wget "https://download.lenovo.com/pccbbs/thinkvantage_en/ldiag_4.41.0_linux.iso" -O "Lenovo_Diagnostics.iso"
+
 
 # ubuntu20.04
-echo -e "${YELLOW}Starting Downloading Ubuntu 20.04${CLEAR}"
-wget "https://releases.ubuntu.com/20.04/ubuntu-20.04.4-desktop-amd64.iso"
+if [ ! -f ubuntu-20.04.4-desktop-amd64.iso ]
+then
+	echo -e "${YELLOW}Starting Downloading Ubuntu 20.04${CLEAR}"
+	wget "https://releases.ubuntu.com/20.04/ubuntu-20.04.4-desktop-amd64.iso"
+fi
 
 # USBOX 7
-echo -e "${YELLOW}Starting Downloading USBOX 7${CLEAR}"
-google_drive_download "1EKWsGPR04mmp5CrqTaZ2yyf9z63o4HnT" "USBOX_V7[ISO版].iso"
+if [ ! -f USBOX_V7[ISO版].iso ]
+then
+	echo -e "${YELLOW}Starting Downloading USBOX 7${CLEAR}"
+	google_drive_download "1EKWsGPR04mmp5CrqTaZ2yyf9z63o4HnT" "USBOX_V7[ISO版].iso"
+fi
 
 # windows 10
-echo -e "${YELLOW}Starting Downloading Windows10${CLEAR}"
-google_drive_download "1VGz51tQakXOnUmLtJUlfpqnrcLyebnbb" "Windows.iso"
+if [ ! -f Windows.iso ]
+then
+	echo -e "${YELLOW}Starting Downloading Windows10${CLEAR}"
+	google_drive_download "1VGz51tQakXOnUmLtJUlfpqnrcLyebnbb" "Windows.iso"
+fi
 
 echo -e "${YELLOW}Starting Moving ISO To Your USB(it may take some time and make sure your usb is NTFS!)${CLEAR}"
 sudo mkdir /mnt/usb
