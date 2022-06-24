@@ -60,9 +60,12 @@ function google_drive_download() {
 	curl -Lb ./cookie "https://drive.google.com/uc?export=download&`echo ${html}|grep -Po '(confirm=[a-zA-Z0-9\-_]+)'`&id=${fileid}" -o ${filename}
 }
 
-# Clonezilla 
-echo -e "${YELLOW}Starting Downloading Clonezilla${CLEAR}"
-wget "https://osdn.net/frs/redir.php?m=rwthaachen&f=clonezilla%2F77480%2Fclonezilla-live-20220620-jammy-amd64.iso" -O "Clonezilla.iso"
+# Clonezilla
+if [ ! -f Clonezilla.iso ]
+then
+	echo -e "${YELLOW}Starting Downloading Clonezilla${CLEAR}"
+	wget "https://osdn.net/frs/redir.php?m=rwthaachen&f=clonezilla%2F77480%2Fclonezilla-live-20220620-jammy-amd64.iso" -O "Clonezilla.iso"
+fi
 
 
 # lenovo
@@ -85,5 +88,5 @@ google_drive_download "1VGz51tQakXOnUmLtJUlfpqnrcLyebnbb" "Windows.iso"
 echo -e "${YELLOW}Starting Moving ISO To Your USB(it may take some time and make sure your usb is NTFS!)${CLEAR}"
 sudo mkdir /mnt/usb
 sudo mount /dev/${usb}1 /mnt/usb
-sudo cp *.iso /mnt/usb
+sudo cp -v *.iso /mnt/usb
 sudo umount /dev/${usb}1
