@@ -52,6 +52,8 @@ cd ..
 
 mkdir iso && cd "$_"
 
+# Clonezilla 
+wget https://osdn.net/projects/clonezilla/downloads/77480/clonezilla-live-20220620-jammy-amd64.iso/
 # lenovo
 wget https://download.lenovo.com/pccbbs/mobiles/g2uj33us.iso
 wget https://download.lenovo.com/pccbbs/thinkvantage_en/ldiag_4.41.0_linux.iso
