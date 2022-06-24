@@ -50,8 +50,8 @@ cd ventoy-1.0.77
 yes | sudo sh Ventoy2Disk.sh -i /dev/XXX 
 cd ..
 
-mkdir iso && cd "$_"
-
+mkdir iso
+cd iso
 # USBOX 7
 wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1EKWsGPR04mmp5CrqTaZ2yyf9z63o4HnT' -O USBOX_V7[ISO版].iso
 # Clonezilla 
@@ -61,6 +61,8 @@ wget https://download.lenovo.com/pccbbs/mobiles/g2uj33us.iso
 wget https://download.lenovo.com/pccbbs/thinkvantage_en/ldiag_4.41.0_linux.iso
 # ubuntu20.04
 wget https://releases.ubuntu.com/20.04/ubuntu-20.04.4-desktop-amd64.iso
+# windows 10
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1VGz51tQakXOnUmLtJUlfpqnrcLyebnbb' -O Windows.iso
 
 sudo mkdir /mnt/usb
 sudo mount /dev/sdb1 /mnt/usb
