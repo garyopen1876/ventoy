@@ -53,7 +53,10 @@ cd ..
 mkdir iso
 cd iso
 # USBOX 7
-wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1EKWsGPR04mmp5CrqTaZ2yyf9z63o4HnT' -O USBOX_V7[ISO版].iso
+fileid="1EKWsGPR04mmp5CrqTaZ2yyf9z63o4HnT"
+filename="USBOX_V7[ISO版].iso"
+html=`curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}"`
+curl -Lb ./cookie "https://drive.google.com/uc?export=download&`echo ${html}|grep -Po '(confirm=[a-zA-Z0-9\-_]+)'`&id=${fileid}" -o ${filename}
 # Clonezilla 
 wget https://osdn.net/frs/redir.php?m=rwthaachen&f=clonezilla%2F77480%2Fclonezilla-live-20220620-jammy-amd64.iso
 # lenovo
@@ -62,9 +65,12 @@ wget https://download.lenovo.com/pccbbs/thinkvantage_en/ldiag_4.41.0_linux.iso
 # ubuntu20.04
 wget https://releases.ubuntu.com/20.04/ubuntu-20.04.4-desktop-amd64.iso
 # windows 10
-wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1VGz51tQakXOnUmLtJUlfpqnrcLyebnbb' -O Windows.iso
+fileid="1VGz51tQakXOnUmLtJUlfpqnrcLyebnbb"
+filename="Windows.iso"
+html=`curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}"`
+curl -Lb ./cookie "https://drive.google.com/uc?export=download&`echo ${html}|grep -Po '(confirm=[a-zA-Z0-9\-_]+)'`&id=${fileid}" -o ${filename}
 
 sudo mkdir /mnt/usb
 sudo mount /dev/sdb1 /mnt/usb
 sudo cp * /mnt/usb
-sudo umount /dev/sdb1
+sudo umount /dev/sdc1
