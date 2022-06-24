@@ -52,10 +52,17 @@ cd ..
 
 mkdir iso && cd "$_"
 
+# USBOX 7
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1EKWsGPR04mmp5CrqTaZ2yyf9z63o4HnT' -O USBOX_V7[ISO版].iso
 # Clonezilla 
-wget https://osdn.net/projects/clonezilla/downloads/77480/clonezilla-live-20220620-jammy-amd64.iso/
+wget https://osdn.net/frs/redir.php?m=rwthaachen&f=clonezilla%2F77480%2Fclonezilla-live-20220620-jammy-amd64.iso
 # lenovo
 wget https://download.lenovo.com/pccbbs/mobiles/g2uj33us.iso
 wget https://download.lenovo.com/pccbbs/thinkvantage_en/ldiag_4.41.0_linux.iso
 # ubuntu20.04
 wget https://releases.ubuntu.com/20.04/ubuntu-20.04.4-desktop-amd64.iso
+
+sudo mkdir /mnt/usb
+sudo mount /dev/sdb1 /mnt/usb
+sudo cp * /mnt/usb
+sudo umount /dev/sdb1
