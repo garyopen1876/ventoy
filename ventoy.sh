@@ -39,38 +39,48 @@ echo -e "                             ...                                     ..
 
 
 sudo apt-get update
+sudo apt-get install -y curl
 
 # Put your ventoy download setting 
-
 wget https://github.com/ventoy/Ventoy/releases/download/v1.0.77/ventoy-1.0.77-linux.tar.gz
 sudo tar -xf ventoy-1.0.77-linux.tar.gz
 cd ventoy-1.0.77
 
-# Put your usb dev (You can use $ lsblk | grep disk to find your usb!)
-yes | sudo sh Ventoy2Disk.sh -i /dev/XXX 
+# Put your usb dev here(You can use $ lsblk | grep disk to find your usb!)
+usb = xxx
+
+yes | sudo sh Ventoy2Disk.sh -i /dev/$usb 
 cd ..
 
 mkdir iso
 cd iso
-# USBOX 7
-fileid="1EKWsGPR04mmp5CrqTaZ2yyf9z63o4HnT"
-filename="USBOX_V7[ISO版].iso"
-html=`curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}"`
-curl -Lb ./cookie "https://drive.google.com/uc?export=download&`echo ${html}|grep -Po '(confirm=[a-zA-Z0-9\-_]+)'`&id=${fileid}" -o ${filename}
+
+# google drive download
+function google_drive_download() {
+	fileid=$1
+	filename=$2
+    html=`curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}"`
+	curl -Lb ./cookie "https://drive.google.com/uc?export=download&`echo ${html}|grep -Po '(confirm=[a-zA-Z0-9\-_]+)'`&id=${fileid}" -o ${filename}
+}
+
+
 # Clonezilla 
-wget https://osdn.net/frs/redir.php?m=rwthaachen&f=clonezilla%2F77480%2Fclonezilla-live-20220620-jammy-amd64.iso
+wget "https://osdn.net/frs/redir.php?m=rwthaachen&f=clonezilla%2F77480%2Fclonezilla-live-20220620-jammy-amd64.iso"
+
 # lenovo
-wget https://download.lenovo.com/pccbbs/mobiles/g2uj33us.iso
-wget https://download.lenovo.com/pccbbs/thinkvantage_en/ldiag_4.41.0_linux.iso
+wget "https://download.lenovo.com/pccbbs/mobiles/g2uj33us.iso"
+wget "https://download.lenovo.com/pccbbs/thinkvantage_en/ldiag_4.41.0_linux.iso"
+
 # ubuntu20.04
-wget https://releases.ubuntu.com/20.04/ubuntu-20.04.4-desktop-amd64.iso
+wget "https://releases.ubuntu.com/20.04/ubuntu-20.04.4-desktop-amd64.iso"
+
+# USBOX 7
+google_drive_download "1EKWsGPR04mmp5CrqTaZ2yyf9z63o4HnT" "USBOX_V7[ISO版].iso"
+
 # windows 10
-fileid="1VGz51tQakXOnUmLtJUlfpqnrcLyebnbb"
-filename="Windows.iso"
-html=`curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}"`
-curl -Lb ./cookie "https://drive.google.com/uc?export=download&`echo ${html}|grep -Po '(confirm=[a-zA-Z0-9\-_]+)'`&id=${fileid}" -o ${filename}
+google_drive_download "1VGz51tQakXOnUmLtJUlfpqnrcLyebnbb" "Windows.iso"
 
 sudo mkdir /mnt/usb
-sudo mount /dev/sdb1 /mnt/usb
+sudo mount /dev/${usb}1 /mnt/usb
 sudo cp * /mnt/usb
-sudo umount /dev/sdc1
+sudo umount /dev/${usb}1
