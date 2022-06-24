@@ -68,7 +68,7 @@ function google_drive_download() {
 wget "https://osdn.net/frs/redir.php?m=rwthaachen&f=clonezilla%2F77480%2Fclonezilla-live-20220620-jammy-amd64.iso"
 
 # lenovo
-wget "https://download.lenovo.com/pccbbs/mobiles/g2uj33us.iso"
+wget "https://download.lenovo.com/pccbbs/mobiles/g2uj33us.iso" -o 
 wget "https://download.lenovo.com/pccbbs/thinkvantage_en/ldiag_4.41.0_linux.iso"
 
 # ubuntu20.04
@@ -82,5 +82,5 @@ google_drive_download "1VGz51tQakXOnUmLtJUlfpqnrcLyebnbb" "Windows.iso"
 
 sudo mkdir /mnt/usb
 sudo mount /dev/${usb}1 /mnt/usb
-sudo cp * /mnt/usb
+sudo cp *.iso /mnt/usb
 sudo umount /dev/${usb}1
