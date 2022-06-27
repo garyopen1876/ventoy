@@ -106,5 +106,5 @@ fi
 echo -e "${YELLOW}Starting Moving ISO To Your USB(it may take some time and make sure your usb is NTFS!)${CLEAR}"
 sudo mkdir /mnt/usb
 sudo mount /dev/${usb}1 /mnt/usb
-sudo cp -v *.iso /mnt/usb
+sudo rsync -av *.iso /mnt/usb
 sudo umount /dev/${usb}1
