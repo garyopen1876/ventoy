@@ -1,6 +1,6 @@
 # ventoy
 
-Auto make a USB with OS and some tool for Lenovo (Linux)!
+Automatically created bootable USB drive for Lenovo (Linux)!
 
 It has:
 
